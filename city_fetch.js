@@ -22,14 +22,17 @@ async function getWeather(city) {
 
     // Extract what you want
     let cityName = data.location.name;
+    let countryName = data.location.country
     let temp = data.current.temp_c;
+    let wDescribe = data.current.condition.text
     let icon = data.current.condition.icon;
     let currTime = data.location.localtime;
 
     // Display
-    document.getElementById("city-name").textContent = cityName;
+    document.getElementById("city-name").textContent = `${cityName}, ${countryName}`;
     document.getElementById("temp").textContent = `Temperature: ${temp}°C`;
     document.getElementById("currTime").textContent = `Current Time: ${currTime}`;
+    document.getElementById("weather-description").textContent = `Condition: ${wDescribe}`;
     document.getElementById("icon").src = "https:" + icon;
   } catch (error) {
     document.getElementById("city-name").textContent = "City not found";
